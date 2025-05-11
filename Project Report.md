@@ -160,7 +160,7 @@ We followed a collaborative and iterative development approach:
 
 ![Image](https://github.com/user-attachments/assets/35378f95-3dd4-49ef-bed0-1c21efb55ca1)
 
-![Image](https://github.com/user-attachments/assets/c449d9b8-6ba5-47a1-b2dc-7149a94f99fe)
+![Image](https://github.com/user-attachments/assets/59fcc8f0-e6c9-41f8-bbd3-6ec637cf51e7)
 
 ![Image](https://github.com/user-attachments/assets/05c3a0bf-3b11-4b6c-8fb8-877e9a4e86b8)
 
