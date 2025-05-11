@@ -683,41 +683,72 @@ int main()
 
         case RESULT:
         {
-            int yPos = 120;
-            int correctCount = 0;
-            for (int i = 0; i < MAX_QUESTIONS; i++)
+            static int currentResultQuestion = 0;
+            QuizQuestion q = game.GetQuestionAtIndex(currentResultQuestion);
+            char correctAns = q.getCorrectAnswer();
+            char userAns = game.getUserAnswer(currentResultQuestion);
+
+            DrawRectangle(645, 25, 150, 30, LIGHTGRAY);
+            DrawText(TextFormat("Question %d/%d", currentResultQuestion + 1, MAX_QUESTIONS),
+                     650, 30, 20, BLACK);
+
+            int questionWidth = MeasureText(q.getQuestion().c_str(), 24);
+            DrawText(q.getQuestion().c_str(), SCREEN_WIDTH / 2 - questionWidth / 2, 80, 24, BLACK);
+
+            int yPos = 180;
+            const int optionHeight = 50;
+
+            for (int j = 0; j < 4; j++)
             {
-                QuizQuestion q = game.GetQuestionAtIndex(i);
-                char correctAns = q.getCorrectAnswer();
-                char userAns = game.getUserAnswer(i);
-                bool isCorrect = (userAns == correctAns);
+                char optionChar = 'a' + j;
+                string optionText = string(1, optionChar) + ") " + q.getOption(j);
+                Rectangle optionRect = {SCREEN_WIDTH / 2 - 300, yPos, 600, optionHeight};
 
-                if (isCorrect)
+                Color boxColor;
+
+                if (optionChar == userAns && userAns == correctAns)
                 {
-                    correctCount++;
+                    boxColor = GREEN;
                 }
 
-                DrawText(TextFormat("Q%d: %s", i + 1, q.getQuestion().c_str()), 50, yPos, 20, BLACK);
-                yPos += 30;
-
-                DrawText(TextFormat("Your answer: %c", userAns), 70, yPos, 20, isCorrect ? GREEN : RED);
-                if (!isCorrect)
+                else if (optionChar == userAns && userAns != correctAns)
                 {
-                    DrawText(TextFormat("Correct: %c", correctAns), 250, yPos, 20, GREEN);
+                    boxColor = RED;
                 }
-                yPos += 40;
 
-                if (i < MAX_QUESTIONS - 1)
+                else if (optionChar == correctAns)
                 {
-                    DrawLine(50, yPos, 750, yPos, LIGHTGRAY);
-                    yPos += 20;
+                    boxColor = GREEN;
                 }
+
+                else
+                {
+                    boxColor = LIGHTGRAY;
+                }
+
+                DrawRectangleRec(optionRect, Fade(boxColor, 0.2f));
+                DrawRectangleLinesEx(optionRect, 2, boxColor);
+
+                int textY = yPos + (optionHeight / 2) - 10;
+                DrawText(optionText.c_str(), SCREEN_WIDTH / 2 - 280, textY, 20, BLACK);
+                yPos += optionHeight + 10;
             }
 
-            Rectangle continueBtn = {SCREEN_WIDTH / 2 - 100, yPos + 20, 200, 40};
-            if (GuiButton(continueBtn, "CONTINUE"))
+            const char *btnText = (currentResultQuestion < MAX_QUESTIONS - 1) ? "NEXT" : "VIEW SCORE";
+            Rectangle nextBtn = {SCREEN_WIDTH / 2 - 100, yPos + 30, 200, 40};
+
+            if (GuiButton(nextBtn, btnText))
             {
-                gameState = FINALSCORE;
+                if (currentResultQuestion < MAX_QUESTIONS - 1)
+                {
+                    currentResultQuestion++;
+                }
+
+                else
+                {
+                    currentResultQuestion = 0;
+                    gameState = FINALSCORE;
+                }
             }
 
             break;
