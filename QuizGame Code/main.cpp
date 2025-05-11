@@ -125,7 +125,7 @@ public:
 
             if (!getline(file, buffer) || buffer.empty())
             {
-                quiz[i].setCorrectAnswer('a'); // fallback
+                quiz[i].setCorrectAnswer('a'); 
             }
             else
             {
