@@ -152,6 +152,19 @@ We followed a collaborative and iterative development approach:
 
 ### Screenshots
 
+![Image](https://github.com/user-attachments/assets/b8cc6b2e-e941-4b9f-a52c-2c3e8ae218a2)
+
+![Image](https://github.com/user-attachments/assets/496a58a8-9a94-4c23-a3a7-3891e2a19941)
+
+![Image](https://github.com/user-attachments/assets/c817a1f6-9acd-4504-84e9-d61463391b67)
+
+![Image](https://github.com/user-attachments/assets/35378f95-3dd4-49ef-bed0-1c21efb55ca1)
+
+![Image](https://github.com/user-attachments/assets/c449d9b8-6ba5-47a1-b2dc-7149a94f99fe)
+
+![Image](https://github.com/user-attachments/assets/05c3a0bf-3b11-4b6c-8fb8-877e9a4e86b8)
+
+![Image](https://github.com/user-attachments/assets/a2088e2c-62dc-4f84-bc02-3f57daf44bcb)
 
 ---
 
